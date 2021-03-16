@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useAuth } from '../lib/auth'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+const Home = () => {
   const auth = useAuth();
 
   return (
@@ -18,21 +18,12 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          {auth.user ? auth.email : "None"}
         </p>
 
-        <button onClick={(e) => auth.signinWithGithub()}>
-          Sign in
-        </button>
-
-        {auth?.user && <button onClick={(e) => auth.signout()}>
-          Sign out
-        </button>}
-
-        <div>
-          {auth?.user?.email}
-        </div>
+        {auth.user ? (
+          <button onClick={(e) => auth.signout()}>Sign out</button>
+        ) : <button onClick={(e) => auth.signinWithGithub()}>Sign in</button>}
 
       </main>
 
@@ -49,3 +40,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home
