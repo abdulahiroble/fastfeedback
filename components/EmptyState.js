@@ -20,7 +20,7 @@ const EmptyState = () => (
             <Heading size="md">You haven't added any sites</Heading>
             <Text>Welcome, let's get started.</Text>
             <Button variant="solid" size="md">
-                Upgrade to starter
+                Add your first site
             </Button>
         </Box>
     </DashboardShell>
