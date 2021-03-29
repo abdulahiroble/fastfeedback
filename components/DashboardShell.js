@@ -24,7 +24,7 @@ const DashboardShell = ({ children }) => (
             p={4}
         >
             <Stack spacing={4} flexDirection="row" isInline>
-                <Icon name="logo" color="black" display="block" />
+                <Icon name="logo" size="24px" mr={8} />
                 <Link display="block">Feedback</Link>
                 <Link>Sites</Link>
             </Stack>
@@ -37,11 +37,11 @@ const DashboardShell = ({ children }) => (
                 <Avatar size="sm" />
             </Flex>
         </Flex>
-        <Flex flexDirection="row" backgroundColor="gray.50" p={8} height="100%">
+        <Flex flexDirection="row" backgroundColor="gray.50" p={8} height="100vh">
             <Flex
                 maxWidth="800px"
-                justifyContent="center"
-                alignItems="center"
+                w="100%"
+                direction="column"
                 ml="auto"
                 mr="auto"
             >
@@ -49,9 +49,9 @@ const DashboardShell = ({ children }) => (
                     <BreadcrumbItem isCurrentPage>
                         <BreadcrumbLink>Sites</BreadcrumbLink>
                     </BreadcrumbItem>
-                    <Heading>Sites</Heading>
-                    {children}
                 </Breadcrumb>
+                <Heading color="black" mb={4}>Sites</Heading>
+                {children}
             </Flex>
         </Flex>
     </Flex>
