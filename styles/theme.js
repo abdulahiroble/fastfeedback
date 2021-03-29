@@ -24,7 +24,7 @@ const theme = {
             viewBox: '0 0 46 32'
         },
     }
-};
+}
 
 export default theme;
 

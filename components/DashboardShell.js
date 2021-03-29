@@ -1,4 +1,7 @@
 import React from 'react'
+import { TriangleUpIcon } from '@chakra-ui/icons'
+import { useAuth } from "@/lib/auth"
+
 import {
     Flex,
     Stack,
@@ -14,17 +17,21 @@ import {
     Box
 } from '@chakra-ui/react'
 
-const DashboardShell = ({ children }) => (
-    <Flex flexDirection="column">
+const DashboardShell = ({ children }) => {
+
+    const auth = useAuth();
+
+    return <Flex flexDirection="column">
         <Flex
-            flexDirection="row"
             backgroundColor="white"
             justifyContent="space-between"
             alignItems="center"
-            p={4}
+            py={4}
+            px={8}
         >
-            <Stack spacing={4} flexDirection="row" isInline>
-                <Icon name="logo" size="24px" mr={8} />
+            <Stack spacing={4} flexDirection="row" isInline align="center">
+                <TriangleUpIcon size="24px" />
+                {/* <Icon name="logo" /> */}
                 <Link display="block">Feedback</Link>
                 <Link>Sites</Link>
             </Stack>
@@ -34,7 +41,7 @@ const DashboardShell = ({ children }) => (
                 alignItems="center"
             >
                 <Link pr={4}>Account</Link>
-                <Avatar size="sm" />
+                <Avatar size="sm" src={auth.user.photoUrl} />
             </Flex>
         </Flex>
         <Flex flexDirection="row" backgroundColor="gray.50" p={8} height="100vh">
@@ -55,6 +62,6 @@ const DashboardShell = ({ children }) => (
             </Flex>
         </Flex>
     </Flex>
-)
+}
 
 export default DashboardShell
