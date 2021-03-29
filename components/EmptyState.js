@@ -20,10 +20,10 @@ const EmptyState = () => (
             direction="column"
             align="center"
         >
-            <Heading size="md" mb={2}>You haven't added any sites</Heading>
+            <Heading size="lg" mb={2}>You haven't added any sites</Heading>
             <Text mb={4}>Let's get started</Text>
-            <Button variant="solid" size="md" fontWeight="medium">
-                Add your first site
+            <Button maxW="200px" fontWeight="medium">
+                Add Your First Site
             </Button>
         </Flex>
     </DashboardShell>
