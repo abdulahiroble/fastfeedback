@@ -8,7 +8,7 @@ import {
     Flex
 } from '@chakra-ui/react'
 import DashboardShell from './DashboardShell'
-
+import AddSiteModal from "./AddSiteModal"
 const EmptyState = () => (
     <DashboardShell>
         <Flex
@@ -22,9 +22,7 @@ const EmptyState = () => (
         >
             <Heading size="lg" mb={2}>You haven't added any sites</Heading>
             <Text mb={4}>Let's get started</Text>
-            <Button maxW="200px" fontWeight="medium">
-                Add Your First Site
-            </Button>
+            <AddSiteModal />
         </Flex>
     </DashboardShell>
 )
