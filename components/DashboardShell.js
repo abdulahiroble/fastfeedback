@@ -1,5 +1,5 @@
 import React from 'react'
-// import { TriangleUpIcon } from '@chakra-ui/icons'
+import { TriangleUpIcon } from '@chakra-ui/icons'
 
 import {
     Flex,
@@ -31,8 +31,8 @@ const DashboardShell = ({ children }) => {
             px={8}
         >
             <Stack spacing={4} flexDirection="row" isInline align="center">
-                {/* <TriangleUpIcon size="24px" /> */}
-                <Icon name="logo" />
+                <TriangleUpIcon size="24px" />
+                {/* <Icon name="logo" /> */}
                 <Link display="block">Feedback</Link>
                 <Link>Sites</Link>
             </Stack>
@@ -58,7 +58,21 @@ const DashboardShell = ({ children }) => {
                         <BreadcrumbLink color="gray.700" fontSize="sm">Sites</BreadcrumbLink>
                     </BreadcrumbItem>
                 </Breadcrumb>
-                <Heading color="black" mb={4}>My Sites</Heading>
+                <Flex justifyContent="space-between">
+                    <Heading mb={8}>My Sites</Heading>
+                    <Button
+                        backgroundColor="gray.900"
+                        color="white"
+                        fontWeight="medium"
+                        _hover={{ bg: 'gray.700' }}
+                        _active={{
+                            bg: 'gray.800',
+                            transform: 'scale(0.95)'
+                        }}
+                    >
+                        + Add Site
+                    </Button>
+                </Flex>
                 {children}
             </Flex>
         </Flex>

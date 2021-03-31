@@ -17,16 +17,23 @@ import {
 } from "@chakra-ui/react"
 
 import { createSite } from "@/lib/db"
+import { useAuth } from "@/lib/auth"
 
 
 const AddSiteModal = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const auth = useAuth()
     const toast = useToast()
     const initialRef = useRef()
     const { register, handleSubmit } = useForm();
 
-    const onCreateSite = (values) => {
-        createSite(values);
+    const onCreateSite = ({ site, url }) => {
+        createSite({
+            authorId: auth.user.uid,
+            createdAt: new Date().toISOString(),
+            site,
+            url
+        });
         toast({
             title: "Success!",
             description: "We've added your site",
