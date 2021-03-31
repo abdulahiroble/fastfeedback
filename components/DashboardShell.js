@@ -1,4 +1,7 @@
 import React from 'react'
+import { TriangleUpIcon } from '@chakra-ui/icons'
+import { useAuth } from "@/lib/auth"
+
 import {
     Flex,
     Stack,
@@ -14,17 +17,21 @@ import {
     Box
 } from '@chakra-ui/react'
 
-const DashboardShell = ({ children }) => (
-    <Flex flexDirection="column">
+const DashboardShell = ({ children }) => {
+
+    const auth = useAuth();
+
+    return <Flex flexDirection="column">
         <Flex
-            flexDirection="row"
             backgroundColor="white"
             justifyContent="space-between"
             alignItems="center"
-            p={4}
+            py={4}
+            px={8}
         >
-            <Stack spacing={4} flexDirection="row" isInline>
-                <Icon name="logo" color="black" display="block" />
+            <Stack spacing={4} flexDirection="row" isInline align="center">
+                <TriangleUpIcon size="24px" />
+                {/* <Icon name="logo" /> */}
                 <Link display="block">Feedback</Link>
                 <Link>Sites</Link>
             </Stack>
@@ -34,27 +41,27 @@ const DashboardShell = ({ children }) => (
                 alignItems="center"
             >
                 <Link pr={4}>Account</Link>
-                <Avatar size="sm" />
+                <Avatar size="sm" src={auth.user.photoUrl} />
             </Flex>
         </Flex>
-        <Flex flexDirection="row" backgroundColor="gray.50" p={8} height="100%">
+        <Flex flexDirection="row" backgroundColor="gray.50" p={8} height="100vh">
             <Flex
                 maxWidth="800px"
-                justifyContent="center"
-                alignItems="center"
+                w="100%"
+                direction="column"
                 ml="auto"
                 mr="auto"
             >
                 <Breadcrumb>
                     <BreadcrumbItem isCurrentPage>
-                        <BreadcrumbLink>Sites</BreadcrumbLink>
+                        <BreadcrumbLink color="gray.700" fontSize="sm">Sites</BreadcrumbLink>
                     </BreadcrumbItem>
-                    <Heading>Sites</Heading>
-                    {children}
                 </Breadcrumb>
+                <Heading color="black" mb={4}>Sites</Heading>
+                {children}
             </Flex>
         </Flex>
     </Flex>
-)
+}
 
 export default DashboardShell
