@@ -1,6 +1,3 @@
-import Head from "next/head"
-import { Button, Text, Code, Icon, Flex } from "@chakra-ui/react"
-
 import { useAuth } from '@/lib/auth'
 import EmptyState from "@/components/EmptyState";
 

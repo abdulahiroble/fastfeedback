@@ -1,6 +1,5 @@
 import React from 'react'
-import { TriangleUpIcon } from '@chakra-ui/icons'
-import { useAuth } from "@/lib/auth"
+// import { TriangleUpIcon } from '@chakra-ui/icons'
 
 import {
     Flex,
@@ -17,9 +16,11 @@ import {
     Box
 } from '@chakra-ui/react'
 
+import { useAuth } from "@/lib/auth"
+
 const DashboardShell = ({ children }) => {
 
-    const auth = useAuth();
+    const { user, signout } = useAuth();
 
     return <Flex flexDirection="column">
         <Flex
@@ -30,8 +31,8 @@ const DashboardShell = ({ children }) => {
             px={8}
         >
             <Stack spacing={4} flexDirection="row" isInline align="center">
-                <TriangleUpIcon size="24px" />
-                {/* <Icon name="logo" /> */}
+                {/* <TriangleUpIcon size="24px" /> */}
+                <Icon name="logo" />
                 <Link display="block">Feedback</Link>
                 <Link>Sites</Link>
             </Stack>
@@ -41,7 +42,7 @@ const DashboardShell = ({ children }) => {
                 alignItems="center"
             >
                 <Link pr={4}>Account</Link>
-                <Avatar size="sm" src={auth.user.photoUrl} />
+                <Avatar size="sm" src={user.photoUrl} />
             </Flex>
         </Flex>
         <Flex flexDirection="row" backgroundColor="gray.50" p={8} height="100vh">
@@ -57,7 +58,7 @@ const DashboardShell = ({ children }) => {
                         <BreadcrumbLink color="gray.700" fontSize="sm">Sites</BreadcrumbLink>
                     </BreadcrumbItem>
                 </Breadcrumb>
-                <Heading color="black" mb={4}>Sites</Heading>
+                <Heading color="black" mb={4}>My Sites</Heading>
                 {children}
             </Flex>
         </Flex>

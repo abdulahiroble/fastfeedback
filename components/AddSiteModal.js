@@ -37,7 +37,6 @@ const AddSiteModal = () => {
         onClose()
     }
 
-
     return (
         <>
             <Button maxW="200px" fontWeight="medium" onClick={onOpen}>
