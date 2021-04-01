@@ -33,16 +33,17 @@ const DashboardShell = ({ children }) => {
             <Stack spacing={4} flexDirection="row" isInline align="center">
                 <TriangleUpIcon size="24px" />
                 {/* <Icon name="logo" /> */}
-                <Link display="block">Feedback</Link>
                 <Link>Sites</Link>
+                <Link display="block">Feedback</Link>
             </Stack>
             <Flex
-                justifyContent="flex-start"
-                flexDirection="row"
+                justifyContent="center"
                 alignItems="center"
             >
-                <Link pr={4}>Account</Link>
-                <Avatar size="sm" src={user.photoUrl} />
+                {user && (<Button variant="ghost" mr={2} onClick={() => signout()}>
+                    Log out
+                </Button>)}
+                <Avatar size="sm" src={user?.photoUrl} />
             </Flex>
         </Flex>
         <Flex flexDirection="row" backgroundColor="gray.50" p={8} height="100vh">
