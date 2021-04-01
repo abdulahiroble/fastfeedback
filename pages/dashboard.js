@@ -1,11 +1,12 @@
 import { useAuth } from '@/lib/auth'
-import EmptyState from "@/components/EmptyState";
+import SiteTableSkeleton from "@/components/SiteTableSkeleton";
+import EmptyState from "@/components/EmptyState"
 
 const Dashboard = () => {
     const auth = useAuth();
 
     if (!auth.user) {
-        return "Loading..."
+        return <SiteTableSkeleton />
     }
 
     return <EmptyState />
