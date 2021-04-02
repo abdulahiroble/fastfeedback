@@ -6,6 +6,7 @@ import {
     Button,
     Box
 } from '@chakra-ui/react'
+
 import DashboardShell from './DashboardShell'
 
 const FreePlanEmptyState = () => (
