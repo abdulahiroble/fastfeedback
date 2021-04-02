@@ -17,7 +17,7 @@ const SiteTable = ({ sites }) => {
             </thead>
             <tbody>
                 {sites.map((site) => (
-                    <Box as="tr" key={site.id}>
+                    <Box as="tr" key={site.url}>
                         <Td fontWeight="bold">
                             {site.name}
                         </Td>
