@@ -4,7 +4,7 @@ import { Box, FormControl, FormLabel, Input, Button, FormHelperText } from '@cha
 import { useAuth } from "@/lib/auth";
 import { useRouter } from 'next/router'
 import { createFeedback } from "@/lib/db";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export async function getStaticProps(context) {
     const siteId = context.params.siteId;
@@ -37,6 +37,7 @@ const SiteFeedback = ({ initialFeedback }) => {
     const auth = useAuth();
     const router = useRouter();
     const inputEl = useRef(null)
+    const [allFeedback, setAllFeedback] = useState(initialFeedback)
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -51,6 +52,7 @@ const SiteFeedback = ({ initialFeedback }) => {
             status: "pending"
         }
 
+        setAllFeedback([newFeedback, ...allFeedback]);
         createFeedback(newFeedback)
 
     }
@@ -67,7 +69,7 @@ const SiteFeedback = ({ initialFeedback }) => {
             </FormControl>
         </Box>
 
-        {initialFeedback.map((feedback) => (
+        {allFeedback.map((feedback) => (
             <Feedback key={feedback.id} {...feedback} />
         ))}
     </Box>
