@@ -18,7 +18,6 @@ const Home = () => {
 
       {auth.user ? (
         <EmptyState />
-        // <Button onClick={(e) => auth.signout()}>Sign out</Button>
       ) : <Button mt={4} size="sm" onClick={(e) => auth.signinWithGithub()}>Sign in</Button>}
     </Flex>
   )
