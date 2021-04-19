@@ -4,7 +4,7 @@ import DashboardShell from "@/components/DashboardShell"
 import useSWR from "swr"
 import fetcher from 'utils/fetcher';
 import FeedbackTableSkeleton from '@/components/FeedbackTableSkeleton';
-import FeedbackTable from '@/components/FeedbackTable';
+import { Feedbacktable } from '@/components/FeedbackTable';
 
 const MyFeedback = () => {
     const { user } = useAuth();
@@ -18,7 +18,7 @@ const MyFeedback = () => {
 
     return (
         <DashboardShell>
-            {data.feedback.length ? (<FeedbackTable allFeedback={data.feedback} />) : (<EmptyState />)}
+            {data.feedback.length ? (<Feedbacktable allFeedback={data.feedback} />) : (<EmptyState />)}
         </DashboardShell>
     )
 
