@@ -1,23 +1,14 @@
 import React from 'react'
 import { TriangleUpIcon } from '@chakra-ui/icons'
-
 import {
     Flex,
     Stack,
-    Icon,
     Link,
     Avatar,
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    Heading,
-    Text,
     Button,
-    Box
 } from '@chakra-ui/react'
 
 import { useAuth } from "@/lib/auth"
-import AddSiteModal from './AddSiteModal'
 
 const DashboardShell = ({ children }) => {
 
@@ -49,23 +40,8 @@ const DashboardShell = ({ children }) => {
         </Flex>
         <Flex flexDirection="row" backgroundColor="gray.50" p={8} height="100vh">
             <Flex
-                maxWidth="800px"
-                w="100%"
-                direction="column"
-                ml="auto"
-                mr="auto"
+                margin="0 auto" direction="column" maxW="1250px" px={8}
             >
-                <Breadcrumb>
-                    <BreadcrumbItem isCurrentPage>
-                        <BreadcrumbLink color="gray.700" fontSize="sm">Sites</BreadcrumbLink>
-                    </BreadcrumbItem>
-                </Breadcrumb>
-                <Flex justifyContent="space-between">
-                    <Heading mb={8}>My Sites</Heading>
-                    <AddSiteModal>
-                        + Add Site
-                    </AddSiteModal>
-                </Flex>
                 {children}
             </Flex>
         </Flex>
