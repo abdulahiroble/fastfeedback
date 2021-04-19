@@ -3,7 +3,7 @@ import { Box, Code } from '@chakra-ui/react';
 import { Table, Tr, Th, Td } from './Table';
 
 
-export const Feedbacktable = ({ allFeedback }) => {
+const Feedbacktable = ({ allFeedback }) => {
     return (
         <Table>
             <thead>
@@ -36,3 +36,5 @@ export const Feedbacktable = ({ allFeedback }) => {
         </Table>
     );
 }
+
+export default Feedbacktable
