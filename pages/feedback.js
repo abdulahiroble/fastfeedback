@@ -4,8 +4,8 @@ import DashboardShell from "@/components/DashboardShell"
 import useSWR from "swr"
 import fetcher from 'utils/fetcher';
 import FeedbackTableSkeleton from '@/components/FeedbackTableSkeleton';
-import Feedbacktable from '@/components/FeedbackTable';
 import FeedbackTableHeader from '@/components/FeedbackTableHeader';
+import Feedbacktable from '@/components/FeedbackTable';
 
 const MyFeedback = () => {
     const { user } = useAuth();
