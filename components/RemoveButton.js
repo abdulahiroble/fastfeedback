@@ -20,7 +20,7 @@ const RemoveButton = ({ feedbackId }) => {
     const onClose = () => setIsOpen(false)
     const onDelete = () => {
         console.log(feedbackId)
-        deleteFeedback();
+        deleteFeedback(feedbackId);
         onClose()
     }
 
