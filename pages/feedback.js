@@ -6,7 +6,6 @@ import fetcher from 'utils/fetcher';
 import FeedbackTableSkeleton from '@/components/FeedbackTableSkeleton';
 import FeedbackTable from '@/components/FeedbackTable';
 
-
 const MyFeedback = () => {
     const { user } = useAuth();
     const { data } = useSWR(user ? ["/api/feedback", user.token] : null, fetcher)
