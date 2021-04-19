@@ -5,7 +5,7 @@ import useSWR from "swr"
 import fetcher from 'utils/fetcher';
 import FeedbackTableSkeleton from '@/components/FeedbackTableSkeleton';
 import FeedbackTableHeader from '@/components/FeedbackTableHeader';
-import Feedbacktable from '@/components/FeedbackTable';
+import Feedbacktable from '../components/FeedbackTable';
 
 const MyFeedback = () => {
     const { user } = useAuth();

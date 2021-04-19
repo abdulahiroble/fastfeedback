@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Code } from '@chakra-ui/react';
 import { Table, Tr, Th, Td } from './Table';
 
-
 const Feedbacktable = ({ allFeedback }) => {
     return (
         <Table>
@@ -19,13 +18,16 @@ const Feedbacktable = ({ allFeedback }) => {
                 {allFeedback.map((feedback) => (
                     <Box as="tr" key={feedback.id}>
                         <Td fontWeight="bold">
-                            {feedback.name}
+                            {feedback.author}
                         </Td>
                         <Td>
                             {feedback.text}
                         </Td>
                         <Td>
                             <Code>{`/`}</Code>
+                        </Td>
+                        <Td>
+                            {'Visible'}
                         </Td>
                         <Td>
                             {'Remove'}
