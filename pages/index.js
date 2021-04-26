@@ -1,6 +1,7 @@
 import Head from "next/head"
 import { TriangleUpIcon } from "@chakra-ui/icons"
-import { Button, Text, Code, Icon, Flex } from "@chakra-ui/react"
+import { Button, Text, Code, Icon, Flex, IconButton } from "@chakra-ui/react"
+import { Github, Logo } from "@/styles/icons"
 
 import { useAuth } from '@/lib/auth'
 import Link from "next/link"
@@ -9,7 +10,13 @@ const Home = () => {
   const auth = useAuth();
 
   return (
-    <Flex as="main" direction="column" align="center" justify="center" h="100vh">
+    <Flex as="main"
+      direction="column"
+      align="center"
+      justify="center"
+      h="100vh"
+      maxW="400px"
+      margin="0 auto">
       <script dangerouslySetInnerHTML={{
         __html: `
           if (document.cookie && document.cookie.includes('fast-feedback-auth')) {
@@ -19,15 +26,13 @@ const Home = () => {
 
       <Head><title>Fast Feedback</title></Head>
 
-      {/* <Icon color="black" name="logo" size="48px" mb={2} /> */}
-
-      <TriangleUpIcon size="48px" mb={2} />
+      <Logo color="black" boxSize="48px" mb={2} />
 
       <Text mb={4}>
         <Text as="span" fontWeight="bold" display="inline">
           Fast Feedback
         </Text>
-        {` is being built as part of`}
+        {` is being built as part of `}
         <Link href="https://react2025.com" isExternal textDecoration="underline">
           React 2025
         </Link>
@@ -50,7 +55,7 @@ const Home = () => {
         >
           View Dashboard
         </Button>
-      ) : <Button mt={4} size="sm" onClick={(e) => auth.signinWithGithub()}>Sign in</Button>}
+      ) : <Button leftIcon={<Github />} mt={4} size="sm" onClick={(e) => auth.signinWithGithub()}>Sign in with Github</Button>}
     </Flex>
   )
 }

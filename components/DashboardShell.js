@@ -1,5 +1,6 @@
 import React from 'react'
-import { TriangleUpIcon } from '@chakra-ui/icons'
+import NextLink from "next/link"
+import { TriangleUpIcon, Icon } from '@chakra-ui/icons'
 import {
     Flex,
     Stack,
@@ -23,10 +24,20 @@ const DashboardShell = ({ children }) => {
             px={8}
         >
             <Stack spacing={4} flexDirection="row" isInline align="center">
-                <TriangleUpIcon size="24px" />
                 {/* <Icon name="logo" /> */}
-                <Link>Sites</Link>
-                <Link display="block">Feedback</Link>
+                <NextLink href="/" passHref>
+                    <TriangleUpIcon size="24px" />
+                </NextLink>
+
+                <NextLink href="/dashboard" passHref>
+                    <Link>Sites</Link>
+                </NextLink>
+
+                <NextLink href="/feedback" passHref>
+                    <Link >Feedback</Link>
+                </NextLink>
+
+
             </Stack>
             <Flex
                 justifyContent="center"
