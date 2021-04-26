@@ -11,16 +11,25 @@ import {
 } from "@chakra-ui/react"
 import { DeleteIcon } from '@chakra-ui/icons'
 import { deleteFeedback } from '@/lib/db'
+import { useAuth } from '@/lib/auth'
+import { mutate } from 'swr'
 
 
 const RemoveButton = ({ feedbackId }) => {
     const [isOpen, setIsOpen] = useState(false)
     const cancelRef = useRef()
+    const auth = useAuth();
 
     const onClose = () => setIsOpen(false)
     const onDelete = () => {
         console.log(feedbackId)
         deleteFeedback(feedbackId);
+        mutate(["/api/feedback", auth.user.token],
+            async (data) => {
+                return { feedback: data.feedback.filter((feedback) => feedback.id !== feedbackId) }
+            }, false)
+
+        onClose()
         onClose()
     }
 
