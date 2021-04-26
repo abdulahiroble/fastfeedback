@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, Link } from '@chakra-ui/react';
+import { Box, Link, Skeleton } from '@chakra-ui/react';
 import { Table, Tr, Th, Td } from './Table';
 import { parseISO, format } from 'date-fns';
 import NextLink from "next/link"
+import Image from "next/image";
 
 const SiteTable = ({ sites }) => {
     return (
@@ -20,6 +21,13 @@ const SiteTable = ({ sites }) => {
                 {sites?.map((site) => (
                     <Box as="tr" key={site.url}>
                         <Td fontWeight="bold">
+                            {/* <Skeleton isLoaded>
+                                <Image width={200}
+                                    height={300}
+                                    src="/1200x0.jpg"
+                                    alt="banner"
+                                />
+                            </Skeleton> */}
                             {site.name}
                         </Td>
                         <Td>
