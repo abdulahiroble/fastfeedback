@@ -1,23 +1,15 @@
 import React from 'react'
-import { TriangleUpIcon } from '@chakra-ui/icons'
-
+import NextLink from "next/link"
+import { TriangleUpIcon, Icon } from '@chakra-ui/icons'
 import {
     Flex,
     Stack,
-    Icon,
     Link,
     Avatar,
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    Heading,
-    Text,
     Button,
-    Box
 } from '@chakra-ui/react'
 
 import { useAuth } from "@/lib/auth"
-import AddSiteModal from './AddSiteModal'
 
 const DashboardShell = ({ children }) => {
 
@@ -32,10 +24,20 @@ const DashboardShell = ({ children }) => {
             px={8}
         >
             <Stack spacing={4} flexDirection="row" isInline align="center">
-                <TriangleUpIcon size="24px" />
                 {/* <Icon name="logo" /> */}
-                <Link>Sites</Link>
-                <Link display="block">Feedback</Link>
+                <NextLink href="/" passHref>
+                    <TriangleUpIcon size="24px" />
+                </NextLink>
+
+                <NextLink href="/dashboard" passHref>
+                    <Link>Sites</Link>
+                </NextLink>
+
+                <NextLink href="/feedback" passHref>
+                    <Link >Feedback</Link>
+                </NextLink>
+
+
             </Stack>
             <Flex
                 justifyContent="center"
@@ -49,23 +51,8 @@ const DashboardShell = ({ children }) => {
         </Flex>
         <Flex flexDirection="row" backgroundColor="gray.50" p={8} height="100vh">
             <Flex
-                maxWidth="800px"
-                w="100%"
-                direction="column"
-                ml="auto"
-                mr="auto"
+                margin="0 auto" direction="column" maxW="1250px" px={8}
             >
-                <Breadcrumb>
-                    <BreadcrumbItem isCurrentPage>
-                        <BreadcrumbLink color="gray.700" fontSize="sm">Sites</BreadcrumbLink>
-                    </BreadcrumbItem>
-                </Breadcrumb>
-                <Flex justifyContent="space-between">
-                    <Heading mb={8}>My Sites</Heading>
-                    <AddSiteModal>
-                        + Add Site
-                    </AddSiteModal>
-                </Flex>
                 {children}
             </Flex>
         </Flex>

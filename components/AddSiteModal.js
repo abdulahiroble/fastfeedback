@@ -46,9 +46,10 @@ const AddSiteModal = ({ children }) => {
             isClosable: true,
         })
 
-        mutate(["/api/sites", auth.user.token], async (data) => {
-            return { sites: [...data.sites, newSite] }
-        }, false)
+        mutate(["/api/sites", auth.user.token],
+            async (data) => {
+                return { sites: [...data.sites, newSite] }
+            }, false)
 
         onClose()
     }
