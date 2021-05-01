@@ -1,6 +1,7 @@
 import React from 'react'
 import NextLink from "next/link"
 import { TriangleUpIcon, Icon } from '@chakra-ui/icons'
+import { Logo } from "@/styles/icons"
 import {
     Flex,
     Stack,
@@ -24,9 +25,8 @@ const DashboardShell = ({ children }) => {
             px={8}
         >
             <Stack spacing={4} flexDirection="row" isInline align="center">
-                {/* <Icon name="logo" /> */}
                 <NextLink href="/" passHref>
-                    <TriangleUpIcon size="24px" />
+                    <Logo color="black" boxSize="24px" />
                 </NextLink>
 
                 <NextLink href="/dashboard" passHref>
