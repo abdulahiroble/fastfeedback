@@ -25,7 +25,7 @@ const Home = () => {
 
       <Head><title>Fast Feedback</title></Head>
 
-      <Logo color="black" boxSize="px" mb={2} />
+      <Logo color="black" boxSize="48px" mb={2} />
 
       <Text mb={4} fontSize="lg" p={6}>
         <Text as="span" fontWeight="bold" display="inline">
