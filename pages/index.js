@@ -8,7 +8,7 @@ import { getAllFeedback } from "@/lib/db-admin"
 import { FeedbackLink } from "@/components/FeedbackLink"
 import Feedback from "@/components/Feedback"
 
-const SITE_ID = "K9qRL2Y3gRz41HSaUgfx"
+const SITE_ID = "ffv56nx2QTLZaOS3Rxpp"
 
 export async function getStaticProps(context) {
   const { feedback } = await getAllFeedback(SITE_ID);
@@ -98,7 +98,8 @@ const Home = ({ allFeedback }) => {
         width="full"
         maxWidth="700px"
         margin="0 auto"
-        mt={8}>
+        mt={8}
+      >
         <FeedbackLink siteId={SITE_ID} />
         {allFeedback.map((feedback) => (
           <Feedback key={feedback.id} {...feedback} />
