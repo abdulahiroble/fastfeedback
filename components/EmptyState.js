@@ -22,7 +22,7 @@ const EmptyState = () => (
         align="center"
     >
         <Heading size="lg" mb={2}>You haven't added any sites</Heading>
-        <Text mb={4}>Let's get started</Text>
+        <Text mb={4}>Let's get started!</Text>
         <AddSiteModal>
             Add Your First Site
         </AddSiteModal>
