@@ -23,6 +23,14 @@ const FeedbackUsage = () => (
     <StatGroup>
         <Stat>
             <StatLabel color="gray.700">Feedback</StatLabel>
+            <StatNumber fontWeight="medium">∞</StatNumber>
+            <StatHelpText>10,000 limit</StatHelpText>
+        </Stat>
+
+        <Stat>
+            <StatLabel color="gray.700">Sites</StatLabel>
+            <StatNumber fontWeight="medium">1/∞</StatNumber>
+            <StatHelpText>Unlimited Sites</StatHelpText>
         </Stat>
     </StatGroup>
 )
@@ -52,8 +60,8 @@ const SettingsTable = ({ stripeRole, children }) => (
                 >
                     Settings
                 </Text>
-                <Badge h="1rem" variantColor="blue">
-                    {stripeRole}
+                <Badge h="1rem" colorScheme="blue">
+                    FREE
                 </Badge>
             </Flex>
         </Flex>
@@ -65,7 +73,7 @@ const SettingsTable = ({ stripeRole, children }) => (
 
 const Account = () => {
     const { user, signout } = useAuth();
-    const [isCheckoutLoading, setCheckoutloading] = useState(false);
+    // const [isCheckoutLoading, setCheckoutloading] = useState(false);
     const [isBillingLoading, setBillingLoading] = useState(false);
 
     return (<DashboardShell>
@@ -96,38 +104,33 @@ const Account = () => {
                     addresses through the secure portal.
                 </Text>
 
+                <Flex justify="flex-end">
+                    <Button variant="ghost" ml={4} onClick={() => signout()}>
+                        Log Out
+                    </Button>
+                    <Button backgroundColor="gray.900"
+                        color="white"
+                        fontWeight="medium"
+                        ml={4}
+                        isLoading={isBillingLoading}
+                        _hover={{ bg: 'gray.700' }}
+                        _active={{
+                            bg: 'gray.800',
+                            transform: 'scale(0.95)'
+                        }} onClick={() => {
+                            setBillingLoading(true);
+                            goToBillingPortal()
+                        }}>
+                        Manage Billing
+                    </Button>
+                </Flex>
+
+
+
+
             </SettingsTable>
 
-            <Button backgroundColor="gray.900"
-                color="white"
-                fontWeight="medium"
-                _hover={{ bg: 'gray.700' }}
-                isLoading={isCheckoutLoading}
-                _active={{
-                    bg: 'gray.800',
-                    transform: 'scale(0.95)'
-                }} mt={4} size="lg" onClick={(e) => {
-                    setCheckoutloading(true);
-                    createCheckoutSession(user.uid)
-                }}>Upgrade to Starter
-            </Button>
-            <Button backgroundColor="gray.900"
-                color="white"
-                fontWeight="medium"
-                ml={4}
-                isLoading={isBillingLoading}
-                _hover={{ bg: 'gray.700' }}
-                _active={{
-                    bg: 'gray.800',
-                    transform: 'scale(0.95)'
-                }} mt={4} size="lg" onClick={(e) => {
-                    setBillingLoading(true);
-                    goToBillingPortal()
-                }}> View Billing Portal
-            </Button>
-            <Button ml={4} onClick={() => signout()}>
-                Log Out
-            </Button>
+
         </Flex>
     </DashboardShell>)
 
