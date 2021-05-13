@@ -61,7 +61,7 @@ const SettingsTable = ({ stripeRole, children }) => (
                     Settings
                 </Text>
                 <Badge h="1rem" colorScheme="blue">
-                    FREE
+                    {stripeRole}
                 </Badge>
             </Flex>
         </Flex>
@@ -92,7 +92,7 @@ const Account = () => {
                 <Text>{user?.email}</Text>
             </Flex>
 
-            <SettingsTable>
+            <SettingsTable stripeRole={user?.stripeRole}>
 
 
 

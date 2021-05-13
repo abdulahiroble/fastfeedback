@@ -8,6 +8,7 @@ import {
     Link,
     Avatar,
     Button,
+    Box,
 } from '@chakra-ui/react'
 
 import { useAuth } from "@/lib/auth"
@@ -16,51 +17,53 @@ const DashboardShell = ({ children }) => {
 
     const { user, signout } = useAuth();
 
-    return <Flex flexDirection="column">
+    return <Box backgroundColor="gray.100" h="100vh">
         <Flex
             backgroundColor="white"
-            justifyContent="space-between"
-            alignItems="center"
-            py={4}
-            px={8}
+            mb={[8, 16]}
+            w="full"
+            borderTop="5px solid #0AF5F4"
         >
-            <Stack spacing={4} flexDirection="row" isInline align="center">
-                <NextLink href="/" passHref>
-                    <Logo color="black" boxSize="24px" />
-                </NextLink>
-
-                <NextLink href="/dashboard" passHref>
-                    <Link>Sites</Link>
-                </NextLink>
-
-                <NextLink href="/feedback" passHref>
-                    <Link >Feedback</Link>
-                </NextLink>
-
-
-            </Stack>
             <Flex
-                justifyContent="center"
                 alignItems="center"
+                justifyContent="space-between"
+                pt={4}
+                pb={4}
+                maxW="1250px"
+                margin="0 auto"
+                w="full"
+                px={8}
+                h="60px"
             >
-                {user && (
-                    <NextLink href="/account" passHref>
-                        <Button as="a" variant="ghost" mr={2}>
-                            Account
-                        </Button>
+                <Flex align="center">
+                    <NextLink href="/" passHref>
+                        <Link>
+                            <Logo color="black" boxSize="24px" mr={8} />
+                        </Link>
                     </NextLink>
-                )}
-                <Avatar size="sm" src={user?.photoUrl} />
+                    <NextLink href="/dashboard" passHref>
+                        <Link mr={4}>Sites</Link>
+                    </NextLink>
+                    <NextLink href="/feedback" passHref>
+                        <Link>Feedback</Link>
+                    </NextLink>
+                </Flex>
+                <Flex justifyContent="center" alignItems="center">
+                    {user && (
+                        <NextLink href="/account" passHref>
+                            <Button as="a" variant="ghost" mr={2}>
+                                Account
+                            </Button>
+                        </NextLink>
+                    )}
+                    <Avatar size="sm" src={user?.photoUrl} />
+                </Flex>
             </Flex>
         </Flex>
-        <Flex flexDirection="row" backgroundColor="gray.50" p={8} height="100vh">
-            <Flex
-                margin="0 auto" direction="column" maxW="1250px" px={8}
-            >
-                {children}
-            </Flex>
+        <Flex margin="0 auto" direction="column" maxW="1250px" px={[0, 8, 8]}>
+            {children}
         </Flex>
-    </Flex>
+    </Box>
 }
 
 export default DashboardShell

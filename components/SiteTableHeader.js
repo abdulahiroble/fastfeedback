@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react'
 import AddSiteModal from './AddSiteModal'
 
-const SiteTableHeader = () => (
+const SiteTableHeader = ({ isPaidAccount }) => (
     <>
         <Breadcrumb>
             <BreadcrumbItem>
@@ -17,9 +17,9 @@ const SiteTableHeader = () => (
         </Breadcrumb>
         <Flex justifyContent="space-between">
             <Heading mb={8}>My Sites</Heading>
-            <AddSiteModal>
+            {isPaidAccount && <AddSiteModal>
                 + Add Site
-            </AddSiteModal>
+            </AddSiteModal>}
         </Flex>
     </>
 )

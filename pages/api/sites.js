@@ -12,7 +12,7 @@ export default async (req, res) => {
 
     const { sites } = await getUserSites(uid);
 
-    res.status(200).json({ sites });
+    res.status(200).json({ sites: [] });
 
   } catch (error) {
 

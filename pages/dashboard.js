@@ -6,10 +6,12 @@ import useSWR from "swr"
 import SiteTable from "@/components/SiteTable"
 import SiteTableHeader from '@/components/SiteTableHeader';
 import fetcher from 'utils/fetcher';
+import UpgradeEmptyState from '@/components/UpradeEmptyState';
 
 const Dashboard = () => {
     const { user } = useAuth();
     const { data } = useSWR(user ? ["/api/sites", user.token] : null, fetcher)
+    const isPaidAccount = false;
 
     if (!data) {
         return <DashboardShell>
@@ -18,9 +20,20 @@ const Dashboard = () => {
         </DashboardShell>
     }
 
+    if (data.sites.length) {
+        return (
+            <DashboardShell>
+                <SiteTableHeader />
+                <SiteTable sites={data.sites} />
+            </DashboardShell>
+        )
+    }
+
+
+
     return (<DashboardShell>
-        <SiteTableHeader />
-        {data.sites.length ? <SiteTable sites={data.sites} /> : <EmptyState />}
+        <SiteTableHeader isPaidAccount={isPaidAccount} />
+        {isPaidAccount ? <EmptyState /> : <UpgradeEmptyState />}
     </DashboardShell>)
 
 
