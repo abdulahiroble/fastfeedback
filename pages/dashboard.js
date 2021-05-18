@@ -7,6 +7,7 @@ import SiteTable from "@/components/SiteTable"
 import SiteTableHeader from '@/components/SiteTableHeader';
 import fetcher from 'utils/fetcher';
 import UpgradeEmptyState from '@/components/UpradeEmptyState';
+import Page from '@/components/Page';
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -39,4 +40,11 @@ const Dashboard = () => {
 
 }
 
-export default Dashboard
+const DashboardPage = () => (
+    // <Page name="Dashboard" path="/dashboard">
+    //     <Dashboard />
+    // </Page>
+    <Dashboard />
+)
+
+export default DashboardPage

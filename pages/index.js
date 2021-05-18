@@ -35,7 +35,6 @@ const Home = ({ allFeedback }) => {
             window.location.href = "/dashboard"
           }
         ` }} />
-            <title>Fast Feedback</title>
           </Head>
 
           <Logo color="black" boxSize="48px" mb={2} />
