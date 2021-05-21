@@ -12,7 +12,7 @@ import Page from '@/components/Page';
 const Dashboard = () => {
     const { user } = useAuth();
     const { data } = useSWR(user ? ["/api/sites", user.token] : null, fetcher)
-    const isPaidAccount = false;
+    const isPaidAccount = true; // change back to false once you sorted out upgrading to premium and it's reflected in the database
 
     if (!data) {
         return <DashboardShell>

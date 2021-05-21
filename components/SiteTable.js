@@ -3,7 +3,6 @@ import { Box, Link, Skeleton } from '@chakra-ui/react';
 import { Table, Tr, Th, Td } from './Table';
 import { parseISO, format } from 'date-fns';
 import NextLink from "next/link"
-import Image from "next/image";
 
 const SiteTable = ({ sites }) => {
     return (
@@ -27,10 +26,14 @@ const SiteTable = ({ sites }) => {
                             {site.url}
                         </Td>
                         <Td>
-                            <NextLink href="/site/[siteId]"
+                            <NextLink
+                                href="/site/[siteId]"
                                 as={`/site/${site.id}`}
-                                passHref>
-                                <Link color="blue.500" fontWeight="medium">View Feedback</Link>
+                                passHref
+                            >
+                                <Link
+                                    color="blue.500"
+                                    fontWeight="medium">View Feedback</Link>
                             </NextLink>
                         </Td>
                         <Td>
