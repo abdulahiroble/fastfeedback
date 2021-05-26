@@ -1,40 +1,25 @@
 import React from 'react';
 import { Box, Code, Switch } from '@chakra-ui/react';
 import { Td } from './Table';
-import RemoveButton from './RemoveButton';
 import { useState } from 'react';
 import { updateFeedback } from '@/lib/db';
 import { mutate } from 'swr';
 import { useAuth } from '@/lib/auth';
+import DeleteFeedbackButton from './DeleteFeedbackButton';
 
-const FeedbackRow = ({ id, author, text, route }) => {
+const FeedbackRow = ({ id, author, text, route, status }) => {
+
     const auth = useAuth()
-    const [checked, setChecked] = useState();
+
+    const isChecked = status === "active"
 
     console.log(status, id)
     const toggleFeedback = async () => {
         // setChecked(!checked)
-        await updateFeedback(id, { status: !checked ? "active" : "pending" })
+        await updateFeedback(id, { status: !isChecked ? "active" : "pending" })
 
         mutate(["/api/feedback", auth.user.token])
 
-        // mutate(["/api/feedback", auth.user.token],
-        //     async (data) => {
-
-        //         const currentFeedback = data.feedback.find((feedback) => feedback.id)
-
-        //         const allOtherFeedback = data.feedback.filter(
-        //             (feedback) => feedback.id !== id
-        //         )
-
-        //         updateFeedback.status = !checked;
-
-        //         return {
-        //             feedback: data.feedback.filter(
-        //                 (feedback) => feedback.id !== allOtherFeedback
-        //             )
-        //         }
-        //     }, false)
     }
 
     return (
@@ -53,10 +38,10 @@ const FeedbackRow = ({ id, author, text, route }) => {
                     colorScheme="green"
                     onClick={toggleFeedback}
                     onChange={toggleFeedback}
-                    isChecked={checked} />
+                    isChecked={isChecked} />
             </Td>
             <Td>
-                <RemoveButton feedbackId={id} />
+                <DeleteFeedbackButton feedbackId={id} />
             </Td>
         </Box>
     );

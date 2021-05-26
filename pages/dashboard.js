@@ -12,7 +12,7 @@ import Page from '@/components/Page';
 const Dashboard = () => {
     const { user } = useAuth();
     const { data } = useSWR(user ? ["/api/sites", user.token] : null, fetcher)
-    const isPaidAccount = true; // change back to false once you sorted out upgrading to premium and it's reflected in the database
+    const isPaidAccount = false; // change back to false once you sorted out upgrading to premium and it's reflected in the database
 
     if (!data) {
         return <DashboardShell>
@@ -24,7 +24,7 @@ const Dashboard = () => {
     if (data.sites.length) {
         return (
             <DashboardShell>
-                <SiteTableHeader />
+                <SiteTableHeader isPaidAccount={isPaidAccount} />
                 <SiteTable sites={data.sites} />
             </DashboardShell>
         )
@@ -41,10 +41,9 @@ const Dashboard = () => {
 }
 
 const DashboardPage = () => (
-    // <Page name="Dashboard" path="/dashboard">
-    //     <Dashboard />
-    // </Page>
-    <Dashboard />
+    <Page name="Dashboard" path="/dashboard">
+        <Dashboard />
+    </Page>
 )
 
 export default DashboardPage
