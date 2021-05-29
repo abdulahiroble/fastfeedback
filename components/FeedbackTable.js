@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Tr, Th } from './Table';
 import FeedbackRow from './FeedbackRow';
 
-const Feedbacktable = ({ allFeedback }) => {
+const Feedbacktable = (props) => {
 
     return (
         <Table>
@@ -12,11 +12,11 @@ const Feedbacktable = ({ allFeedback }) => {
                     <Th>Feedback</Th>
                     <Th>Route</Th>
                     <Th>Visible</Th>
-                    <Th>{''}</Th>
+                    <Th width="50px">{''}</Th>
                 </Tr>
             </thead>
             <tbody>
-                {allFeedback.map((feedback) => <FeedbackRow key={feedback.id} {...feedback} />)}
+                {props.map((feedback) => <FeedbackRow key={feedback.id} {...feedback} />)}
             </tbody>
         </Table>
     );
