@@ -1,5 +1,5 @@
 import { auth } from "@/lib/firebase-admin"
-import { getUserFeedback } from '@/lib/db-admin';
+import { getAllFeedback } from '@/lib/db-admin';
 import { formatObjectKeys, logger } from "utils/logger";
 
 export default async (req, res) => {
@@ -7,7 +7,7 @@ export default async (req, res) => {
     try {
         const { uid } = await auth.verifyIdToken(req.headers.token)
 
-        const { feedback } = await getUserFeedback(uid);
+        const { feedback } = await getAllFeedback(uid);
 
         res.status(200).json({ feedback });
 

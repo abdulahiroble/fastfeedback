@@ -4,10 +4,10 @@ import useSWR from "swr"
 import fetcher from 'utils/fetcher';
 import FeedbackTableSkeleton from '@/components/FeedbackTableSkeleton';
 import FeedbackTableHeader from '@/components/FeedbackTableHeader';
-import Feedbacktable from '../components/FeedbackTable';
 import FeedbackEmptyState from '@/components/FeedbackEmptyState';
 import Page from '@/components/Page';
 import { useRouter } from 'next/router';
+import Feedbacktable from '@/components/FeedbackTable';
 
 const SiteFeedback = () => {
     const { user } = useAuth();
@@ -16,14 +16,14 @@ const SiteFeedback = () => {
 
     if (!data) {
         return <DashboardShell>
-            <FeedbackTableHeader />
+            <FeedbackTableHeader siteName="Test Site" />
             <FeedbackTableSkeleton />
         </DashboardShell>
     }
 
     return (
         <DashboardShell>
-            <FeedbackTableHeader />
+            <FeedbackTableHeader siteName="Test Site" />
             {data.feedback.length ? (<Feedbacktable allFeedback={data.feedback} />) : (<FeedbackEmptyState />)}
         </DashboardShell>
     )

@@ -18,12 +18,20 @@ const SiteTable = ({ sites }) => {
             </thead>
             <tbody>
                 {sites?.map((site) => (
-                    <Box as="tr" key={site.url}>
-                        <Td fontWeight="bold">
-                            {site.name}
+                    <Box as="tr" key={siteId}>
+                        <Td>
+                            <NextLink
+                                href="/site/[siteId]"
+                                as={`site/${site.id}`}
+                                passHref
+                            >
+                                <Link fontWeight="medium">{site.name}</Link>
+                            </NextLink>
                         </Td>
                         <Td>
-                            {site.url}
+                            <Link href={site.url} isExternal>
+                                {site.url}
+                            </Link>
                         </Td>
                         <Td>
                             <NextLink
@@ -31,15 +39,37 @@ const SiteTable = ({ sites }) => {
                                 as={`/site/${site.id}`}
                                 passHref
                             >
-                                <Link
-                                    color="blue.500"
-                                    fontWeight="medium">View Feedback</Link>
+                                <Link color="blue.500" fontWeight="medium">
+                                    View Feedback
+                                </Link>
                             </NextLink>
                         </Td>
-                        <Td>
-                            {format(parseISO(site.createdAt), "PPpp")}
-                        </Td>
+                        <Td>{format(parseISO(site.createdAt), "PPpp")}</Td>
                     </Box>
+
+
+                    // <Box as="tr" key={site.url}>
+                    //     <Td fontWeight="bold">
+                    //         {site.name}
+                    //     </Td>
+                    //     <Td>
+                    //         {site.url}
+                    //     </Td>
+                    //     <Td>
+                    //         <NextLink
+                    //             href="/site/[siteId]"
+                    //             as={`/site/${site.id}`}
+                    //             passHref
+                    //         >
+                    //             <Link
+                    //                 color="blue.500"
+                    //                 fontWeight="medium">View Feedback</Link>
+                    //         </NextLink>
+                    //     </Td>
+                    //     <Td>
+                    //         {format(parseISO(site.createdAt), "PPpp")}
+                    //     </Td>
+                    // </Box>
                 ))}
             </tbody>
         </Table>
