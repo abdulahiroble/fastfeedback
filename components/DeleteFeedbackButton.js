@@ -15,7 +15,7 @@ import { useAuth } from '@/lib/auth'
 import { mutate } from 'swr'
 
 
-const RemoveButton = ({ feedbackId }) => {
+const DeleteFeedbackButton = ({ feedbackId }) => {
     const [isOpen, setIsOpen] = useState(false)
     const cancelRef = useRef()
     const auth = useAuth();
@@ -67,4 +67,4 @@ const RemoveButton = ({ feedbackId }) => {
     )
 }
 
-export default RemoveButton
+export default DeleteFeedbackButton

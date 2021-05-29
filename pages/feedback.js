@@ -1,11 +1,12 @@
 import { useAuth } from '@/lib/auth'
-import EmptyState from "@/components/EmptyState"
 import DashboardShell from "@/components/DashboardShell"
 import useSWR from "swr"
 import fetcher from 'utils/fetcher';
 import FeedbackTableSkeleton from '@/components/FeedbackTableSkeleton';
 import FeedbackTableHeader from '@/components/FeedbackTableHeader';
 import Feedbacktable from '../components/FeedbackTable';
+import FeedbackEmptyState from '@/components/FeedbackEmptyState';
+import Page from '@/components/Page';
 
 const MyFeedback = () => {
     const { user } = useAuth();
@@ -21,11 +22,17 @@ const MyFeedback = () => {
     return (
         <DashboardShell>
             <FeedbackTableHeader />
-            {data.feedback.length ? (<Feedbacktable allFeedback={data.feedback} />) : (<EmptyState />)}
+            {data.feedback.length ? (<Feedbacktable feedback={data.feedback} />) : (<FeedbackEmptyState />)}
         </DashboardShell>
     )
 
 
 }
 
-export default MyFeedback
+const MyFeedbackPage = () => (
+    <Page name="My Feedback" path="/feedback">
+        <MyFeedback />
+    </Page>
+)
+
+export default MyFeedbackPage

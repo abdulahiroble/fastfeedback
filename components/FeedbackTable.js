@@ -1,10 +1,9 @@
 import React from 'react';
-import { Box, Code, Switch, IconButton } from '@chakra-ui/react';
-import { Table, Tr, Th, Td } from './Table';
-import { DeleteIcon } from '@chakra-ui/icons'
-import RemoveButton from './RemoveButton';
+import { Table, Tr, Th } from './Table';
+import FeedbackRow from './FeedbackRow';
 
-const Feedbacktable = ({ allFeedback }) => {
+const Feedbacktable = (props) => {
+
     return (
         <Table>
             <thead>
@@ -13,29 +12,11 @@ const Feedbacktable = ({ allFeedback }) => {
                     <Th>Feedback</Th>
                     <Th>Route</Th>
                     <Th>Visible</Th>
-                    <Th>{''}</Th>
+                    <Th width="50px">{''}</Th>
                 </Tr>
             </thead>
             <tbody>
-                {allFeedback.map((feedback) => (
-                    <Box as="tr" key={feedback.id}>
-                        <Td fontWeight="bold">
-                            {feedback.author}
-                        </Td>
-                        <Td>
-                            {feedback.text}
-                        </Td>
-                        <Td>
-                            <Code>{`/`}</Code>
-                        </Td>
-                        <Td>
-                            <Switch variantcolor="green" defaultIsChecked={feedback.status == "active"} />
-                        </Td>
-                        <Td>
-                            <RemoveButton feedbackId={feedback.id} />
-                        </Td>
-                    </Box>
-                ))}
+                {props.map((feedback) => <FeedbackRow key={feedback.id} {...feedback} />)}
             </tbody>
         </Table>
     );
