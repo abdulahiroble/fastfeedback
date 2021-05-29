@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
 import { Box } from '@chakra-ui/react';
 
-import Feedback from '@/components/Feedback';
-import FeedbackLink from '@/components/FeedbackLink';
+
 import { getAllFeedback, getAllSites } from '@/lib/db-admin';
+import { FeedbackLink } from '@/components/FeedbackLink';
+import Feedback from '@/components/Feedback';
 
 export async function getStaticProps(context) {
     const siteId = context.params.siteId;
@@ -13,7 +14,7 @@ export async function getStaticProps(context) {
         props: {
             initialFeedback: feedback
         },
-        unstable_revalidate: 1
+        revalidate: 1
     };
 }
 
