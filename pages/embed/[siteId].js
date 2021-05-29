@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { Box } from '@chakra-ui/core';
+import { Box } from '@chakra-ui/react';
 
 import Feedback from '@/components/Feedback';
 import FeedbackLink from '@/components/FeedbackLink';
